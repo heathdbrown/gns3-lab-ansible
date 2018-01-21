@@ -1,0 +1,9 @@
+---
+- name: "Include tasks based on ansbile_network_os"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_network_os }}_mlag.yml"
+    - "mlag.yml"
+  when:
+    - mlag is defined
+    - mlag.enabled

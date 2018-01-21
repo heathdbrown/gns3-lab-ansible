@@ -1,0 +1,9 @@
+---
+- name: "EOS L3 interfaces using config and src"
+  eos_config:
+    src: templates/l3_interfaces.j2
+  when:
+     - l3_interfaces is defined
+  tags:
+    - l3_interfaces
+    - mlag

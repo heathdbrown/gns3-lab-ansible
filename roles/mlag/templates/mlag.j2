@@ -1,0 +1,7 @@
+no spanning-tree vlan {{ mlag.vlan }}
+
+mlag configuration
+   local-interface {{ mlag.local_interface }}
+   peer-address {{ mlag.peer_address }}
+   peer-link {{ mlag.peer_link }}
+   domain-id {{ mlag.domain_id }}

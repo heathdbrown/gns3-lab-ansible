@@ -1,0 +1,12 @@
+feature vpc
+
+vpc domain {{ mlag.domain_id }}
+  peer-gateway
+  graceful consistency-check
+  peer-switch
+  ip arp synchronize
+  peer-keepalive destination {{ mlag.peer_address }} source {{ mlag.ip }}
+  role priority {{ mlag.priority }}
+
+interface {{ mlag.peer_link }}
+  vpc peer-link

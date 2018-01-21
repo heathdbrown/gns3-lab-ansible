@@ -1,0 +1,8 @@
+---
+- name: "Include tasks based on ansbile_network_os"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_network_os }}_l2_interfaces.yml"
+    - "l2_interfaces.yml"
+  when:
+    - l2_interfaces is defined

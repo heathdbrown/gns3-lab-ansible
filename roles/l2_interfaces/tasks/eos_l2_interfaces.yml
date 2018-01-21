@@ -1,0 +1,9 @@
+---
+- name: "EOS L2 interfaces using config and src"
+  eos_config:
+    src: templates/l2_interfaces.j2
+  when:
+     - l2_interfaces is defined
+  tags:
+    - l2_interfaces
+    - bridging

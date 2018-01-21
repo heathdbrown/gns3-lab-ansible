@@ -1,0 +1,10 @@
+---
+banner:
+  login: |
+     This login banner was created by Ansible {{ ansible_version.full }}
+
+     Please do not overwrite
+  motd: |
+     This motd banner was created by Ansible {{ ansible_version.full }}
+
+     Please do not overwrite

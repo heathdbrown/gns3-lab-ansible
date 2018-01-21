@@ -1,0 +1,9 @@
+[eos_nodes]
+sw1 ansible_network_os=eos
+sw2 ansible_network_os=eos
+sw10 ansible_network_os=eos
+
+[nxos_nodes]
+sw5 ansible_network_os=nxos
+sw6 ansible_network_os=nxos
+sw11 ansible_network_os=nxos

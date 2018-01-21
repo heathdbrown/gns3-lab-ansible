@@ -1,0 +1,70 @@
+---
+hostname: sw1
+
+banner:
+  login: |
+     This login banner was created by Ansible {{ ansible_version.full }}
+ 
+     Please do not overwrite
+  motd: |
+     This motd banner was created by Ansible {{ ansible_version.full }}
+   
+     Please do not overwrite
+
+spanning_tree:
+  priority: 4096
+
+interfaces:
+  - name: Ethernet1
+    description: To x SW10_Eth1
+  - name: Ethernet2
+    description: To x SW3_Eth1/1
+  - name: Ethernet3
+    description: To x SW4_Eth1/1
+  - name: Ethernet4
+    description: To x SW2_Eth4
+
+l2_interfaces:
+  - name: Ethernet1
+    mode: trunk
+  - name: Ethernet4
+    mode: trunk
+  - name: Port-Channel999
+    mode: trunk
+
+l3_interfaces:
+  - name: Vlan4094
+    ipv4: 192.168.1.1/30
+
+linkagg:
+  - name: Port-Channel999
+    id: 999
+    mode: active
+    members:
+      - Ethernet4
+  - name: Port-Channel1
+    id: 1
+    mode: active
+    members:
+      - Ethernet1
+
+mlag_interfaces:
+  - name: Port-Channel1
+    id: 1
+
+vlans:
+  - vlan_id: 2
+    name: Ansible_Test_2
+  - vlan_id: 3
+    name: Ansible_Test_3
+  - vlan_id: 4094
+    name: MLAG_VLAN
+
+mlag:
+  enabled: true
+  vlan: 4094
+  ip: 192.168.1.1/30
+  peer_address: 192.168.1.2
+  peer_link: Port-Channel999
+  domain_id: sw1sw2mlag100
+  local_interface: Vlan4094

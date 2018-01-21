@@ -1,0 +1,6 @@
+{% for interface in l2_interfaces %}
+
+interface {{ interface.name }}
+    switchport mode {{ interface.mode }}
+
+{% endfor %}

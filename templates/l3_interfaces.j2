@@ -1,0 +1,6 @@
+{% for interface in l3_interfaces %}
+
+interface {{ interface.name }}
+   ip address {{ interface.ipv4 }}
+
+{% endfor %}

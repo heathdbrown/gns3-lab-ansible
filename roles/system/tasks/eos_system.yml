@@ -1,0 +1,27 @@
+---
+- name: "EOS hostname using config and src"
+  eos_config:
+    src: templates/system.j2
+  when: hostname is defined
+  tags:
+    - system
+
+- name: "EOS eos_banner login"
+  eos_banner:
+    banner: login
+    text: "{{ banner.login }}"
+    state: present
+  when: banner.login is defined
+  tags:
+    - banner
+    - system
+
+- name: "EOS eos_banner motd"
+  eos_banner:
+    banner: motd
+    text: "{{ banner.motd }}"
+    state: present
+  when: banner.motd is defined
+  tags:
+    - banner
+    - system

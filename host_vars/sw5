@@ -1,0 +1,65 @@
+---
+hostname: sw5
+
+banner:
+  login: |
+     This login banner was created by Ansible {{ ansible_version.full }}
+ 
+     Please do not overwrite
+  motd: |
+     This motd banner was created by Ansible {{ ansible_version.full }}
+   
+     Please do not overwrite
+
+spanning_tree:
+  priority: 4096
+
+interfaces:
+  - name: Ethernet1/1
+    description: To x SW11_Eth1/1
+  - name: Ethernet1/2
+    description: to x SW3_Eth1/4
+  - name: Ethernet1/3
+    description: To x SW4_Eth1/4
+  - name: Ethernet1/4
+    description: To x SW6_Eth1/4
+
+l2_interfaces:
+  - name: Ethernet1/1
+    mode: trunk
+  - name: Ethernet1/4
+    mode: trunk
+  - name: port-channel999
+    mode: trunk
+
+# l3_interfaces:
+
+linkagg:
+  - name: port-channel999
+    id: 999
+    mode: active
+    members:
+      - Ethernet1/4
+  - name: port-channel1
+    id: 1
+    mode: active
+    members:
+      - Ethernet1/1
+
+mlag_interfaces:
+  - name: port-channel1
+    id: 1
+
+vlans:
+  - vlan_id: 2
+    name: Ansible_Test_2
+  - vlan_id: 3
+    name: Ansible_Test_3
+
+mlag:
+  enabled: true
+  ip: 172.16.0.5
+  peer_address: 172.16.0.6
+  peer_link: port-channel999
+  domain_id: 100
+  priority: 4096

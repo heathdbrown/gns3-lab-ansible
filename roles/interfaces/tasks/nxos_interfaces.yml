@@ -1,0 +1,7 @@
+---
+- name: "NXOS Interfaces using config and src"
+  nxos_config:
+    src: templates/interfaces.j2
+  when: interfaces is defined
+  tags:
+    - interfaces

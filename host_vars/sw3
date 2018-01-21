@@ -1,0 +1,45 @@
+---
+hostname: sw3
+interfaces:
+  - name: Ethernet1
+    description: To x SW10_Eth2
+  - name: Ethernet2
+    description: To x SW3_Eth1/3
+  - name: Ethernet3
+    description: To x SW4_Eth1/3
+  - name: Ethernet4
+    description: To x SW1_Eth4
+  - name: Ethernet5
+    description: Not In Use
+  - name: Ethernet6
+    description: Not In Use
+  - name: Ehternet7
+    description: Not In Use
+  - name: Ethernet8
+    description: Not In Use
+  - name: Ethernet9
+    description: Not In Use
+  - name: Ethernet10
+    description: Not In Use
+  - name: Ethernet11
+    description: Not In Use
+  - name: Ethernet12
+    description: Not In Use
+  - name: Ethernet13
+    description: Not In Use
+  - name: Ethernet14
+    description: Not In Use
+  - name: Ethernet15
+    description: Not In Use
+
+vlans:
+  - vlan_id: 2
+    name: Ansible Test for Vlan 2
+    interfaces:
+      - Ethernet5
+      - Ethernet6
+  - vlan_id: 3
+    name: Ansible Test for Vlan 3
+    interfaces:
+      - Ethernet7
+      - Ethernet8

@@ -1,0 +1,29 @@
+---
+- name: "NXOS hostname using config and src"
+  nxos_config:
+    src: templates/system.j2
+  when: hostname is defined
+  tags:
+    - system
+
+- name: "NXOS nxos_banner login"
+  nxos_banner:
+    banner: exec
+    text: "{{ banner.login }}"
+    state: present
+  when: banner.login is defined
+  ignore_errors: true
+  tags:
+    - banner
+    - system
+
+- name: "NXOS nxos_banner motd"
+  nxos_banner:
+    banner: motd
+    text: "{{ banner.motd }}"
+    state: present
+  when: banner.motd is defined
+  ignore_errors: true
+  tags:
+    - banner
+    - system

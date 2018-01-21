@@ -1,0 +1,62 @@
+---
+hostname: sw11
+
+interfaces:
+  - name: Ethernet1/1
+    description: To x SW5_Eth1/1
+  - name: Ethernet1/2
+    description: To x SW6_Eth1/1
+  - name: Ethernet1/3
+    description: Not In Use
+  - name: Ethernet1/4
+    description: Not In Use
+  - name: Ethernet1/5
+    description: Not In Use
+  - name: Ethernet1/6
+    description: Not In Use
+  - name: Ethernet1/7
+    description: Not In Use
+  - name: Ethernet1/8
+    description: Not In Use
+  - name: Ethernet1/9
+    description: Not In Use
+  - name: Ethernet1/10
+    description: Not In Use
+  - name: Ethernet1/11
+    description: Not In Use
+  - name: Ethernet1/12
+    description: Not In Use
+  - name: Ethernet1/13
+    description: Not In Use
+  - name: Ethernet1/14
+    description: Not In Use
+  - name: Ethernet1/15
+    description: Not In Use
+
+l2_interfaces:
+  - name: Ethernet1/1
+    mode: trunk
+  - name: Ethernet1/2
+    mode: trunk
+  - name: port-channel1
+    mode: trunk
+
+linkagg:
+  - name: port-channel1
+    id: 1
+    mode: active
+    members:
+      - Ethernet1/1
+      - Ethernet1/2
+
+vlans:
+  - vlan_id: 2
+    name: Ansible_Test_2
+    interfaces:
+      - Ethernet1/5
+      - Ethernet1/6
+  - vlan_id: 3
+    name: Ansible_Test_3
+    interfaces:
+      - Ethernet1/7
+      - Ethernet1/8

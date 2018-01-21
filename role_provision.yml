@@ -1,0 +1,14 @@
+---
+- name: "Provision the GNS3 Lab using eos_"
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  roles:
+    - { role: system, tags: ["banner", "system"]}
+    - { role: interfaces, tags: ["interfaces"]}
+    - { role: bridging, tags: ["bridging", "vlans", "spanning_tree"]}
+    - { role: l2_interfaces, tags: ["bridging", "l2_interfaces"]}
+    - { role: l3_interfaces, tags: ["mlag", "l3_interfaces"]}
+    - { role: linkagg, tags: ["mlag", "linkagg"]}
+    - { role: mlag, tags: ["mlag", "linkagg", "mlag_interfaces"]}

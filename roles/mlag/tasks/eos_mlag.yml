@@ -1,0 +1,19 @@
+---
+- name: "EOS MLAG Configuration using config and src"
+  eos_config:
+    src: templates/mlag.j2
+  when:
+     - mlag is defined
+     - mlag.enabled
+  tags:
+    - mlag
+
+- name: "EOS MLAG interfaces using config and src"
+  eos_config:
+    src: templates/mlag_interfaces.j2
+  when:
+     - mlag_interfaces is defined
+  tags:
+    - mlag_interfaces
+    - linkagg
+    - mlag

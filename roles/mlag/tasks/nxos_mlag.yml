@@ -1,0 +1,19 @@
+---
+- name: "NXOS MLAG Configuration using config and src"
+  nxos_config:
+    src: templates/nxos_mlag.j2
+  when:
+     - mlag is defined
+     - mlag.enabled
+  tags:
+    - mlag
+
+- name: "NXOS MLAG interfaces using config and src"
+  nxos_config:
+    src: templates/nxos_mlag_interfaces.j2
+  when:
+     - mlag_interfaces is defined
+  tags:
+    - mlag_interfaces
+    - linkagg
+    - mlag

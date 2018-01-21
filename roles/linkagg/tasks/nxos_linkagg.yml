@@ -1,0 +1,9 @@
+---
+- name: "NXOS Port-channel interfaces using config and src"
+  nxos_config:
+    src: templates/nxos_linkagg.j2
+  when:
+     - linkagg is defined
+  tags:
+    - linkagg
+    - mlag

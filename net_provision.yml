@@ -1,0 +1,42 @@
+---
+- name: "Provision the GNS3 Lab using net_* modules"
+  hosts: all
+  gather_facts: true
+  connection: local
+
+  tasks:
+
+  - name: "Use net_system to configure hostname"
+    net_system:
+      hostname: "{{ hostname }}"
+      state: present
+
+  - name: "Use net_banner to configure login banner"
+    net_banner:
+      banner: login
+      text: "{{ banner.login }}"
+      state: present
+
+  - name: "Use net_banner to confgiure motd banner"
+    net_banner:
+      banner: motd
+      text: "{{ banner.motd }}"
+      state: present
+
+  - name: "Use net_user to configure system user"
+    net_user:
+      name: admin
+      state: present
+
+  - name: "Use net_interface to configure ansible_interfaces"
+    net_interface:
+      aggregate: "{{ interfaces }}"
+    when: interfaces is defined
+
+# List out of range error
+  - name: "Use net_vlan to configure vlans"
+    net_vlan:
+      aggregate: "{{ vlans }}"
+    when: vlans is defined
+    ignore_errors: true
+

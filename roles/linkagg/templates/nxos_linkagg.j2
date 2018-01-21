@@ -1,0 +1,12 @@
+feature lacp
+
+{% for interface in linkagg %}
+
+{% for member in interface.members %}
+
+interface {{ member }}
+    channel-group {{ interface.id }} mode {{ interface.mode }}
+
+{% endfor %}
+
+{% endfor %}

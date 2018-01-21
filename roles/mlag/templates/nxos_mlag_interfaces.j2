@@ -1,0 +1,4 @@
+{% for interface in mlag_interfaces %}
+interface {{ interface.name }}
+  vpc {{ interface.id }}
+{% endfor %}

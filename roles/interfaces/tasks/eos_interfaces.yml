@@ -1,0 +1,7 @@
+---
+- name: "EOS Interfaces using config and src"
+  eos_config:
+    src: templates/interfaces.j2
+  when: interfaces is defined
+  tags:
+    - interfaces

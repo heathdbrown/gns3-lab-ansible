@@ -1,0 +1,19 @@
+---
+- name: "NXOS Vlans using config and src"
+  nxos_config:
+    src: templates/vlans.j2
+  when: vlans is defined
+  tags:
+    - bridging
+    - vlans
+
+- name: "NXOS Spanning-tree using config and src"
+  nxos_config:
+    src: templates/nxos_spanning_tree.j2
+  when:
+     - spanning_tree is defined
+  ignore_errors: true
+  tags:
+    - spanning_tree
+    - bridging
+    - vlans

@@ -1,0 +1,8 @@
+---
+- name: "Include tasks based on ansbile_network_os"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_network_os }}_system.yml"
+    - "system.yml"
+  when:
+    - hostname is defined

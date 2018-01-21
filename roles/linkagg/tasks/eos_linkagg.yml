@@ -1,0 +1,9 @@
+---
+- name: "EOS Port-channel interfaces using config and src"
+  eos_config:
+    src: templates/linkagg.j2
+  when:
+     - linkagg is defined
+  tags:
+    - linkagg
+    - mlag
