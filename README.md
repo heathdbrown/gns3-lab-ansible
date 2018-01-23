@@ -21,3 +21,24 @@ Other variables, no module was encountered that had specific type for variables 
 - banner
 - spanning_tree
 - mlag
+
+# Setup
+
+Requirements:
+- Ansible 2.4.2
+- ANSIBLE_NET* environment variables setup in .bashrc / .profile
+
+The below variables are set for authentication and behaviors for the way the Ansible network connectors work.
+
+
+Variable | Value
+-------- | ------
+ANSIBLE_NET_USERNAME | admin
+ANSIBLE_NET_PASSWORD | admin
+ANSIBLE_NET_AUTHORIZE | true
+ANSIBLE_NET_AUTH_PASS | admin
+ANSIBLE_LOG_PATH | ~/ansible.log
+ANSIBLE_DEBUG | false
+
+*ANSIBLE_NET_AUTHORIZE is only needed if you do not have TACACS dropping you into Privilege Exec mode (#) by default.
+*ANSIBLE_NET_PASS is only needed if you enable authorization.
